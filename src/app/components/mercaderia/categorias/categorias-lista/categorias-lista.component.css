@@ -1,0 +1,32 @@
+@media only screen and (min-width: 600px) {
+    .mat-card {
+        max-width: 80%;
+        margin: 1em auto;    
+        text-align: left;    
+    }
+}
+@media (min-width: 320px) and (max-width: 599px) {
+    .mat-card{
+        max-width: 80%;
+        margin: 1em auto;    
+        text-align: left;    
+    }
+}
+.mat-card-actions{
+    text-align: center;
+}
+
+  .mat-header-cell:first-child,.mat-cell:first-child{
+    flex:80%;
+  }
+  .mat-header-cell:nth-child(2),.mat-cell:nth-child(2){
+    flex:10%;
+  }
+  .mat-header-cell:nth-child(3),.mat-cell:nth-child(3){
+    flex:10%;
+  }
+
+  .eliminado{
+    color:red;
+    text-decoration-line: line-through;
+  }

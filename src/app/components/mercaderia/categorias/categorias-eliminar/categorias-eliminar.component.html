@@ -1,3 +1,8 @@
-<p>
-  categorias-eliminar works!
-</p>
+<mat-card>
+    <mat-card-title>
+      NOMBRE: {{dato.nombre| uppercase}}
+    </mat-card-title>
+    <mat-card-actions style="text-align: right;">
+      <button (click)="eliminar()" mat-raised-button color="warn" >Eliminar</button>
+    </mat-card-actions>
+  </mat-card>

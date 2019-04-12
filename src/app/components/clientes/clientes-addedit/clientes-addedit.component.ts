@@ -50,7 +50,7 @@ export class ClientesAddeditComponent {
         },
         error => {
           if (error.status === 404) {
-            this.router.navigateByUrl('/clientes/ver');
+            this.router.navigateByUrl('/clientes/lista');
           } else { console.log(error); }
         }
       );

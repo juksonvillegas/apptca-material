@@ -10,7 +10,6 @@ import { CategoriasRutas } from './components/mercaderia/categorias/categorias.r
 const appRoutes: Routes = [
     {path: 'clientes', component: ClientesComponent, children: ClientesRutas},
     {path: 'proveedores', component: ProveedoresComponent, children: ProveedoresRutas},
-    {path: 'mercaderia', component: MercaderiaComponent},
     {path: 'categorias', component: CategoriasComponent, children: CategoriasRutas},
     {path: '', redirectTo: '/clientes/agregar', pathMatch: 'full'},
     {path: '**', redirectTo: '/clientes/agregar', pathMatch: 'full'},

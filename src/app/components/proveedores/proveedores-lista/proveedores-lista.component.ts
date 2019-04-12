@@ -41,9 +41,6 @@ export class ProveedoresListaComponent implements OnInit {
       this.pages = b;
     } else { this.pages = a; }
   }
-  chargePage(page) {
-    this.paginar(page);
-  }
   ngOnInit() {
     this.paginar(1);
   }

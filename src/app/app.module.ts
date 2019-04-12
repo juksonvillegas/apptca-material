@@ -19,7 +19,6 @@ import { ProveedoresComponent } from './components/proveedores/proveedores.compo
 import { ProveedoresAddeditComponent } from './components/proveedores/proveedores-addedit/proveedores-addedit.component';
 import { ProveedoresListaComponent } from './components/proveedores/proveedores-lista/proveedores-lista.component';
 import { ProveedoresEliminarComponent } from './components/proveedores/proveedores-eliminar/proveedores-eliminar.component';
-import { MercaderiaComponent } from './components/mercaderia/mercaderia.component';
 import { CategoriasComponent } from './components/mercaderia/categorias/categorias.component';
 import { CategoriasAddeditComponent } from './components/mercaderia/categorias/categorias-addedit/categorias-addedit.component';
 import { CategoriasListaComponent } from './components/mercaderia/categorias/categorias-lista/categorias-lista.component';
@@ -39,7 +38,6 @@ import { CategoriasEliminarComponent } from './components/mercaderia/categorias/
     ProveedoresAddeditComponent,
     ProveedoresListaComponent,
     ProveedoresEliminarComponent,
-    MercaderiaComponent,
     CategoriasComponent,
     CategoriasAddeditComponent,
     CategoriasListaComponent,

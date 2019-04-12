@@ -12,28 +12,8 @@
         text-align: left;    
     }
 }
-.input-full-width{
-    padding-top: 15px;
-    width: 100%;
-}
-.input-middle-width{
-    width: 50%;
-}
-.mat-radio-level-content{
-    padding-right: 10px;
-}
 .mat-card-actions{
     text-align: center;
-}
-.sticky{
-  position: sticky;
-  position: -webkit-sticky; /* For macOS/iOS Safari */
-  top: 0; /* Sets the sticky toolbar to be on top */
-  z-index: 10000; 
-}
-.mat-button-toggle-checked{
-    background: #4caf50;
-    color: white;
 }
 @media screen and (max-width: 599px) {
     .mat-table {

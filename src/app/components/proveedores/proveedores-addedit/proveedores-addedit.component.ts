@@ -44,7 +44,7 @@ export class ProveedoresAddeditComponent implements OnInit {
         },
         error => {
           if (error.status === 404) {
-            this.router.navigateByUrl('/clientes/ver');
+            this.router.navigateByUrl('/proveedores/lista');
           } else { console.log(error); }
         }
       );

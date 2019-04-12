@@ -40,7 +40,7 @@ export class ProveedoresEliminarComponent implements OnInit {
         },
         error => {
           if (error.status === 404) {
-            this.router.navigateByUrl('/proveedors/lista');
+            this.router.navigateByUrl('/proveedores/lista');
           } else { console.log(error); }
         }
       );

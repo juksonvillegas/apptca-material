@@ -22,7 +22,33 @@
         <a mat-list-item >Caja</a>
         <a mat-list-item routerLink="clientes/agregar" >Clientes</a>
         <a mat-list-item routerLink="proveedores" >Proveedores</a>
-        <a mat-list-item routerLink="mercaderia" >Mercadería</a>
+        <a mat-list-item (click)="toggleMenu()">
+          Mercadería
+          <mat-icon *ngIf="!showMenu">chevron_right</mat-icon>
+          <mat-icon *ngIf="showMenu">expand_more</mat-icon>
+        </a>
+        <mat-nav-list class="sidenav-submenu" *ngIf="showMenu">
+          <a mat-list-item routerLink="categorias">
+            <mat-icon>chevron_right</mat-icon>
+            Categorias
+          </a>
+          <a mat-list-item >
+            <mat-icon>chevron_right</mat-icon>
+            Marcas
+          </a>
+          <a mat-list-item >
+            <mat-icon>chevron_right</mat-icon>
+            Modelos
+          </a>
+          <a mat-list-item >
+            <mat-icon>chevron_right</mat-icon>
+            Precios
+          </a>
+          <a mat-list-item >
+            <mat-icon>chevron_right</mat-icon>
+            Productos
+          </a>
+        </mat-nav-list>
         <a mat-list-item >Consignaciones</a>
         <a mat-list-item >Compras</a>
         <a mat-list-item >Ventas</a>

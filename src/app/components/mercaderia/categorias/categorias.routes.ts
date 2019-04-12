@@ -4,9 +4,9 @@ import { CategoriasListaComponent } from './categorias-lista/categorias-lista.co
 import { CategoriasEliminarComponent } from './categorias-eliminar/categorias-eliminar.component';
 
 export const CategoriasRutas: Routes = [
-    {path: 'agregar', component: CategoriasAddeditComponent, outlet: 'categorias'},
-    {path: 'lista', component: CategoriasListaComponent, outlet: 'categorias'},
-    {path: 'eliminar/:id', component: CategoriasEliminarComponent, outlet: 'categorias'},
-    {path: 'editar/:id', component: CategoriasAddeditComponent, outlet: 'categorias'},
+    {path: 'agregar', component: CategoriasAddeditComponent},
+    {path: 'lista', component: CategoriasListaComponent},
+    {path: 'eliminar/:id', component: CategoriasEliminarComponent},
+    {path: 'editar/:id', component: CategoriasAddeditComponent},
     {path: '**', redirectTo: 'agregar', pathMatch: 'full'},
 ];

@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  showMenu = false;
   title = 'apptca-material';
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+ }
 }
