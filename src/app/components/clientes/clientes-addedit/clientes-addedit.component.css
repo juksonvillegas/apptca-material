@@ -1,0 +1,39 @@
+@media only screen and (min-width: 600px) {
+    .mat-card{
+        max-width: 60%;
+        margin: 1em auto;    
+        text-align: left;    
+    }
+}
+@media (min-width: 320px) and (max-width: 599px) {
+    .mat-card{
+        max-width: 80%;
+        margin: 1em auto;    
+        text-align: left;    
+    }
+}
+.input-full-width{
+    padding-top: 15px;
+    width: 100%;
+}
+.input-middle-width{
+    width: 50%;
+}
+.mat-radio-level-content{
+    padding-right: 10px;
+}
+.mat-card-actions{
+    text-align: right;
+}
+.links{
+    display: inline-block;
+    width: 100%;
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #f8f8f8;
+}
+.mat-button-toggle-checked{
+    background: #4caf50;
+    color: white;
+}

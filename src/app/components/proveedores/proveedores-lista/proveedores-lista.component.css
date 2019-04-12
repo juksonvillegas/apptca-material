@@ -1,0 +1,107 @@
+@media only screen and (min-width: 600px) {
+    .mat-card {
+        max-width: 80%;
+        margin: 1em auto;    
+        text-align: left;    
+    }
+}
+@media (min-width: 320px) and (max-width: 599px) {
+    .mat-card{
+        max-width: 80%;
+        margin: 1em auto;    
+        text-align: left;    
+    }
+}
+.input-full-width{
+    padding-top: 15px;
+    width: 100%;
+}
+.input-middle-width{
+    width: 50%;
+}
+.mat-radio-level-content{
+    padding-right: 10px;
+}
+.mat-card-actions{
+    text-align: center;
+}
+.sticky{
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 10000; 
+}
+.mat-button-toggle-checked{
+    background: #4caf50;
+    color: white;
+}
+@media screen and (max-width: 599px) {
+    .mat-table {
+      border: 0;
+      vertical-align: middle
+    }  
+    .mat-table caption {
+      font-size: 1em;
+    }
+    .mat-header-row {
+        display: none;
+    }
+    .mat-table .mat-row {
+      border-bottom: 5px solid #ddd;
+      display: block;
+      min-height: 0px;
+    }
+    .mat-table .mat-cell {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: 1em;
+      text-align: right;
+      font-weight: bold;
+      height:40px;
+      min-height: initial;
+      /* margin-bottom: 4%; */
+    }
+    .mat-table .mat-cell:before {
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: normal;
+      font-size: .85em;
+    }
+    .mat-table .mat-cell:last-child {
+      border-bottom: 0;
+      padding-right: 0px;
+    }
+    .mat-table .mat-cell:first-child {
+        padding-left: 0px;
+      /* margin-top: 4%; */
+    }
+  }
+  .mat-header-cell:first-child,.mat-cell:first-child{
+    flex:25%;
+  }
+  .mat-header-cell:nth-child(2),.mat-cell:nth-child(2){
+    flex:13%;
+  }
+  .mat-header-cell:nth-child(3),.mat-cell:nth-child(3){
+    flex:13%;
+  }
+  .mat-header-cell:nth-child(4),.mat-cell:nth-child(4){
+    flex:13%;
+  }
+  .mat-header-cell:nth-child(5),.mat-cell:nth-child(5){
+    flex:5%;
+  }
+  .mat-header-cell:nth-child(6),.mat-cell:nth-child(6){
+    flex:5%;
+  }
+  .mat-header-cell:nth-child(7),.mat-cell:nth-child(7){
+    flex:5%;
+  }
+  .mat-header-cell:last-child,.mat-cell:last-child{
+    flex:5%
+  }
+  .eliminado{
+    color:red;
+    text-decoration-line: line-through;
+  }

@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-title>
+    NOMBRE: {{dato.nombre| uppercase}}
+  </mat-card-title>
+  <mat-card-content>
+    TELEFONO: {{dato.telefono}} <p></p>
+    DNI: {{dato.dni}} <p></p>
+    FECHA NAC: {{dato.nacimiento}} <p></p>
+    <span *ngIf="dato.sexo; else mujer">SEXO: HOMBRE</span><p></p>
+    <span *ngIf="dato.mayorista; else mayorista;">MAYORISTA: SI</span>
+    <ng-template #mujer>
+        SEXO: MUJER
+      </ng-template>
+    <ng-template #mayorista>
+      MAYORISTA: NO
+    </ng-template>
+  </mat-card-content>
+  <mat-card-actions style="text-align: right;">
+    <button (click)="eliminar()" mat-raised-button color="warn" >Eliminar</button>
+  </mat-card-actions>
+</mat-card>

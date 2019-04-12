@@ -1,0 +1,74 @@
+<app-buscar (busquedaEvent)="busqueda($event)" [modelo]="modelo" [params]="params" ></app-buscar>
+<mat-card>
+  <mat-card-content>
+    <mat-table [dataSource]="this.lista">
+      <ng-container matColumnDef="nombre" sticky>
+        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="nombre">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            {{column.nombre | uppercase}}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="telefono">
+        <mat-header-cell *matHeaderCellDef> Teléfono </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="telefono">
+          {{column.telefono}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="dni">
+        <mat-header-cell *matHeaderCellDef> DNI </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="dni">
+          {{column.dni}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="nacimiento">
+        <mat-header-cell *matHeaderCellDef> Fec. Nac. </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="fec. nac.">
+        {{column.nacimiento | date: 'dd/MM/yyyy'}}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="sexo">
+        <mat-header-cell *matHeaderCellDef> Sexo </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="sexo">
+          <span *ngIf="column.sexo; else sexo;">
+            H
+          </span>
+          <ng-template #sexo>M</ng-template>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="mayorista" stickyEnd>
+        <mat-header-cell *matHeaderCellDef> Mayorista </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="mayorista">
+            <span *ngIf="column.mayorista; else nomayorista;">
+                <mat-icon>check_box</mat-icon>
+              </span>
+              <ng-template #nomayorista>
+                <mat-icon>check_box_outline_blank</mat-icon>
+              </ng-template>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="editar" stickyEnd>
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <a routerLink="/clientes/editar/{{row.id}}">
+              <mat-icon>edit</mat-icon>
+            </a>
+          </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="eliminar" stickyEnd>
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <a routerLink="/clientes/eliminar/{{row.id}}">
+              <mat-icon>delete</mat-icon>
+            </a>
+          </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-paginator (paginationEvent)="paginarModelo($event)" [modelo]="modelo" [pages]="pages" [datos]="datos" ></app-paginator>
+  </mat-card-actions> 
+</mat-card> 

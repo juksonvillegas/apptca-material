@@ -1,0 +1,4 @@
+<mat-button-toggle-group *ngIf="datos > 10" value="1">
+  <mat-button-toggle *ngFor = "let item of [].constructor(pages); let i = index"
+  value="{{i +1 }}" (click)="paginar(i+1)" >{{i+1}}</mat-button-toggle>
+</mat-button-toggle-group>

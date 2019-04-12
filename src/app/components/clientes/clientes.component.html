@@ -1,0 +1,17 @@
+<!-- Formulario CLientes -->
+<mat-card>
+  <h2>CLIENTES</h2>
+  <div class="links">
+    <mat-button-toggle-group value="agregar">
+        <mat-button-toggle routerLink='agregar' value="agregar">
+          <mat-icon>add</mat-icon>
+          Agregar
+        </mat-button-toggle>
+        <mat-button-toggle routerLink='lista' value="listar">
+          <mat-icon>list</mat-icon>
+          Ver Todos
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</mat-card>
+<router-outlet></router-outlet>

@@ -1,0 +1,18 @@
+<mat-accordion >
+  <mat-expansion-panel class="sticky">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Buscar "modelo"
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field class="input-full-width">
+      <input matInput (keydown.enter)="busqueda($event)" placeholder="Ingrese texto" autocomplete="off">
+    </mat-form-field>
+    <mat-form-field class="input-middle-width" >
+        <mat-label>Buscar por</mat-label>
+        <select matNativeControl (change)="selected($event)">
+          <option *ngFor="let p of params" value="{{p.value}}">{{p.text}}</option>
+        </select>
+      </mat-form-field>
+  </mat-expansion-panel>
+</mat-accordion>

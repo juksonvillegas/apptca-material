@@ -1,0 +1,72 @@
+<!-- Formulario CLientes -->
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar style="background: #f4ed6d;" *ngIf="this.id">
+      <span>Editando...</span>
+    </mat-toolbar>
+    <form action="" [formGroup]="formGroup">
+      <table class="input-full-width">
+        <tr>
+          <td>
+            <mat-form-field class="input-full-width">
+              <input formControlName="nombre" required matInput placeholder="Nombres" autocomplete="off">
+            </mat-form-field>
+            <mat-error *ngIf="getError('nombre')">
+              Nombre muy corto.
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="input-middle-width">
+              <input type="text" required formControlName="telefono" matInput placeholder="Teléfono" autocomplete="off">        
+            </mat-form-field>
+            <mat-error *ngIf="getError('telefono')">
+              9 digitos
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput formControlName="nacimiento" [matDatepicker]="picker" autocomplete="off" placeholder="Fecha de Nac.">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="input-middle-width">
+              <input type="text" formControlName="dni" matInput placeholder="DNI" autocomplete="off">
+            </mat-form-field>
+            <mat-error *ngIf="getError('dni')">
+              8 digitos
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+          <td height="40px">
+            <mat-form-field>
+              <mat-label>Sexo</mat-label>
+              <select matNativeControl formControlName="sexo" >
+                <option value=true>Hombre</option>
+                <option value=false>Mujer</option>
+              </select>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td height="40px">
+            <mat-checkbox formControlName="mayorista" style="padding-top: 10px;">Mayorista</mat-checkbox>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="retornar();" mat-raised-button *ngIf="!dato.estado" color="primary">Retornar</button>
+    <button *ngIf="dato.estado" (click)="guardar();" mat-raised-button [disabled]="formGroup.invalid" color="primary">Guardar</button>
+  </mat-card-actions>
+</mat-card>
+

@@ -1,0 +1,31 @@
+.sticky{
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 10000; 
+}
+@media only screen and (min-width: 600px) {
+    .mat-expansion-panel{
+        max-width: 80%;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin: 1em auto;    
+        text-align: left;    
+    }
+}
+@media (min-width: 320px) and (max-width: 599px) {
+    .mat-expansion-panel{
+        max-width: 80%;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin: 1em auto;    
+        text-align: left;    
+    }
+}
+.input-full-width{
+    padding-top: 15px;
+    width: 100%;
+}
+.input-middle-width{
+    width: 50%;
+}
