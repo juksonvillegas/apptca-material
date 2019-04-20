@@ -23,6 +23,23 @@ import { CategoriasComponent } from './components/mercaderia/categorias/categori
 import { CategoriasAddeditComponent } from './components/mercaderia/categorias/categorias-addedit/categorias-addedit.component';
 import { CategoriasListaComponent } from './components/mercaderia/categorias/categorias-lista/categorias-lista.component';
 import { CategoriasEliminarComponent } from './components/mercaderia/categorias/categorias-eliminar/categorias-eliminar.component';
+import { MarcasComponent } from './components/mercaderia/marcas/marcas.component';
+import { MarcasAddeditComponent } from './components/mercaderia/marcas/marcas-addedit/marcas-addedit.component';
+import { MarcasListaComponent } from './components/mercaderia/marcas/marcas-lista/marcas-lista.component';
+import { MarcasEliminarComponent } from './components/mercaderia/marcas/marcas-eliminar/marcas-eliminar.component';
+import { ModelosComponent } from './components/mercaderia/modelos/modelos.component';
+import { ModelosAddeditComponent } from './components/mercaderia/modelos/modelos-addedit/modelos-addedit.component';
+import { ModelosListaComponent } from './components/mercaderia/modelos/modelos-lista/modelos-lista.component';
+import { ModelosEliminarComponent } from './components/mercaderia/modelos/modelos-eliminar/modelos-eliminar.component';
+import { PreciosComponent } from './components/mercaderia/precios/precios.component';
+import { PreciosAddeditComponent } from './components/mercaderia/precios/precios-addedit/precios-addedit.component';
+import { PreciosListaComponent } from './components/mercaderia/precios/precios-lista/precios-lista.component';
+import { PreciosEliminarComponent } from './components/mercaderia/precios/precios-eliminar/precios-eliminar.component';
+import { ProductosComponent } from './components/mercaderia/productos/productos.component';
+import { ProductosAddeditComponent } from './components/mercaderia/productos/productos-addedit/productos-addedit.component';
+import { ProductosListaComponent } from './components/mercaderia/productos/productos-lista/productos-lista.component';
+import { ProdutosEliminarComponent } from './components/mercaderia/productos/produtos-eliminar/produtos-eliminar.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +58,23 @@ import { CategoriasEliminarComponent } from './components/mercaderia/categorias/
     CategoriasComponent,
     CategoriasAddeditComponent,
     CategoriasListaComponent,
-    CategoriasEliminarComponent
+    CategoriasEliminarComponent,
+    MarcasComponent,
+    MarcasAddeditComponent,
+    MarcasListaComponent,
+    MarcasEliminarComponent,
+    ModelosComponent,
+    ModelosAddeditComponent,
+    ModelosListaComponent,
+    ModelosEliminarComponent,
+    PreciosComponent,
+    PreciosAddeditComponent,
+    PreciosListaComponent,
+    PreciosEliminarComponent,
+    ProductosComponent,
+    ProductosAddeditComponent,
+    ProductosListaComponent,
+    ProdutosEliminarComponent
   ],
   imports: [
     BrowserModule,

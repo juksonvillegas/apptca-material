@@ -1,0 +1,61 @@
+<app-buscar (busquedaEvent)="busqueda($event)" [modelo]="modelo" [params]="params" ></app-buscar>
+<mat-card>
+  <mat-card-content>
+    <mat-table [dataSource]="this.lista">
+      <ng-container matColumnDef="nombre" >
+        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="nombre">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            {{column.nombre | uppercase}}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="unitario" >
+        <mat-header-cell *matHeaderCellDef> P. Unitario </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="P. Unitario">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            S/. {{column.unitario}}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="punto" >
+        <mat-header-cell *matHeaderCellDef> P. Punto </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="P. Punto">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            S/. {{column.punto}}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="docena" >
+        <mat-header-cell *matHeaderCellDef> P. Docena </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="P. Docena">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            S/. {{column.docena}}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="editar" >
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <a routerLink="/precios/editar/{{row.id}}">
+              <mat-icon>edit</mat-icon>
+            </a>
+          </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="eliminar" >
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <a routerLink="/precios/eliminar/{{row.id}}">
+              <mat-icon>delete</mat-icon>
+            </a>
+          </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-paginator (paginationEvent)="paginarModelo($event)" [modelo]="modelo" [pages]="pages" [datos]="datos" ></app-paginator>
+  </mat-card-actions> 
+</mat-card> 
+

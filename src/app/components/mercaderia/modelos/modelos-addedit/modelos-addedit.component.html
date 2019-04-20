@@ -1,0 +1,54 @@
+<!-- Formulario CLientes -->
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar style="background: #f4ed6d;" *ngIf="this.id">
+      <span>Editando...</span>
+    </mat-toolbar>
+    <form action="" [formGroup]="formGroup">
+      <table class="input-full-width">
+        <tr>
+          <td>
+            <mat-form-field class="input-full-width">
+              <input formControlName="nombre" required matInput placeholder="Nombres" autocomplete="off">
+            </mat-form-field>
+            <mat-error *ngIf="getError('nombre')">
+              Nombre muy corto.
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="input-full-width">
+              <input #inputMarca formControlName="marca" (keyup)="buscarMarca(inputMarca.value)" required [matAutocomplete]="marcasautocomplete" matInput placeholder="Marca">
+            </mat-form-field>
+            <mat-autocomplete autoActiveFirstOption #marcasautocomplete="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let marca of marcas" [value]="marca">
+                <span>{{ marca.nombre }}</span>
+                <small> | ID: {{marca.id}}</small>
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="getError('marca')">
+              Debe seleccionar marca
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+            <td>
+              <mat-form-field class="input-full-width">
+                <input formControlName="extendido" matInput placeholder="Agregue detalles" autocomplete="off">
+              </mat-form-field>
+              <mat-error *ngIf="getError('extendido')">
+                Error en extendido
+              </mat-error>
+            </td>
+          </tr>
+      </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="retornar();" mat-raised-button *ngIf="!dato.estado" color="primary">Retornar</button>
+    <button *ngIf="dato.estado" (click)="guardar();" mat-raised-button [disabled]="formGroup.invalid" color="primary">Guardar</button>
+  </mat-card-actions>
+</mat-card>
+
+

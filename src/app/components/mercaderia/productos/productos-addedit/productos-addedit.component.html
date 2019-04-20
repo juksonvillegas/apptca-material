@@ -1,0 +1,68 @@
+<!-- Formulario CLientes -->
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar style="background: #f4ed6d;" *ngIf="this.id">
+      <span>Editando...</span>
+    </mat-toolbar>
+    <form action="" [formGroup]="formGroup">
+      <table class="input-full-width">
+        <tr>
+          <td>
+            <mat-form-field class="input-full-width">
+              <input #inputCategoria formControlName="categoria" (keyup)="autocomplete('categorias/' ,inputCategoria.value)" required [matAutocomplete]="categoriasautocomplete" matInput placeholder="Categoría">
+            </mat-form-field>
+            <mat-autocomplete autoActiveFirstOption #categoriasautocomplete="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let mode of modelos" [value]="mode">
+                <span> {{mode.nombre|titlecase}}</span>
+                <small> | ID: {{mode.id}}</small>
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="getError('modelo')">
+              Debe seleccionar marca
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="input-full-width">
+              <input #inputModelo formControlName="modelo" (keyup)="autocomplete('modelos/' ,inputModelo.value)" required [matAutocomplete]="modelosautocomplete" matInput placeholder="Modelo">
+            </mat-form-field>
+            <mat-autocomplete autoActiveFirstOption #modelosautocomplete="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let mode of modelos" [value]="mode">
+                <span> {{mode.marca_nombre|titlecase}}-{{ mode.nombre|titlecase }}</span>
+                <small> | ID: {{mode.id}}</small>
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="getError('modelo')">
+              Debe seleccionar modelo
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="input-full-width">
+              <input #inputPrecio formControlName="precio" (keyup)="autocomplete('precios/' ,inputPrecio.value)" required [matAutocomplete]="preciosautocomplete" matInput placeholder="Precio">
+            </mat-form-field>
+            <mat-autocomplete autoActiveFirstOption #preciosautocomplete="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let mode of modelos" [value]="mode">
+                <span> {{ mode.nombre|titlecase }}</span>
+                <small> | PU: {{mode.unitario}}</small>
+                <small> | PP: {{mode.punto}}</small>
+                <small> | PD: {{mode.docena}}</small>
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="getError('modelo')">
+              Debe seleccionar precio
+            </mat-error>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="retornar();" mat-raised-button *ngIf="!dato.estado" color="primary">Retornar</button>
+    <button *ngIf="dato.estado" (click)="guardar();" mat-raised-button [disabled]="formGroup.invalid" color="primary">Guardar</button>
+  </mat-card-actions>
+</mat-card>
+
+

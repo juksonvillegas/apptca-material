@@ -14,6 +14,8 @@ import {MatSnackBarModule} from '@angular/material';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 import {
     MatButtonModule,
@@ -38,6 +40,7 @@ import {
     MatPaginatorModule,
     MatExpansionModule,
     MatTabsModule,
+    MatAutocompleteModule
 ],
   exports: [MatButtonModule,
     MatCheckboxModule,
@@ -56,6 +59,7 @@ import {
     MatPaginatorModule,
     MatExpansionModule,
     MatTabsModule,
+    MatAutocompleteModule
 ],
 })
 export class MaterialModule { }

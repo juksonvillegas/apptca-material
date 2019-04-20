@@ -1,0 +1,53 @@
+<app-buscar (busquedaEvent)="busqueda($event)" [modelo]="modelo" [params]="params" ></app-buscar>
+<mat-card>
+  <mat-card-content>
+    <mat-table [dataSource]="this.lista">
+        <ng-container matColumnDef="marca_nombre" sticky>
+            <mat-header-cell *matHeaderCellDef> Marca </mat-header-cell>
+            <mat-cell *matCellDef="let column" data-label="Marca">
+              <span [ngClass]="{'eliminado':!column.estado}">
+                {{column.marca_nombre | uppercase}}
+              </span>
+            </mat-cell>
+          </ng-container>
+      <ng-container matColumnDef="nombre" sticky>
+        <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="Nombre">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            {{column.nombre | uppercase}}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="extendido" sticky>
+          <mat-header-cell *matHeaderCellDef> Extendido </mat-header-cell>
+          <mat-cell *matCellDef="let column" data-label="Extendido">
+            <span [ngClass]="{'eliminado':!column.estado}">
+              {{column.extendido}}
+            </span>
+          </mat-cell>
+        </ng-container>
+      <ng-container matColumnDef="editar" stickyEnd>
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <a routerLink="/modelos/editar/{{row.id}}">
+              <mat-icon>edit</mat-icon>
+            </a>
+          </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="eliminar" stickyEnd>
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <a routerLink="/modelos/eliminar/{{row.id}}">
+              <mat-icon>delete</mat-icon>
+            </a>
+          </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-paginator (paginationEvent)="paginarModelo($event)" [modelo]="modelo" [pages]="pages" [datos]="datos" ></app-paginator>
+  </mat-card-actions> 
+</mat-card> 
+
