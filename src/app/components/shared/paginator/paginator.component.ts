@@ -1,15 +1,18 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, OnChanges } from '@angular/core';
 import { ApiService } from '../../../api.service';
+
 
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.css']
+
 })
-export class PaginatorComponent implements OnInit {
+export class PaginatorComponent implements OnInit, OnChanges {
   @Input() modelo: string;
   @Input() pages: number;
   @Input() datos: number;
+  @Input() busq: string;
   lista = [];
   @Output() paginationEvent = new EventEmitter<any>();
   constructor(private servicio: ApiService) {
@@ -17,12 +20,34 @@ export class PaginatorComponent implements OnInit {
   ngOnInit() {
     this.paginar(1);
   }
+
+  ngOnChanges() {
+    this.ngOnInit();
+  }
+
+  pagination() {
+    const a: number = Math.trunc(+this.datos / 10);
+    let b: number = this.datos % 10;
+    if (b > 0) {
+      b = a + 1;
+      this.pages = b;
+    } else { this.pages = a; }
+  }
   paginar = (page) => {
-    const ruta = '?page=' + page;
-    this.servicio.getData(this.modelo, ruta).subscribe(
+    let ruta: string;
+    if (this.busq) {
+      ruta = '&page=' + page;
+    } else {
+      ruta = '?page=' + page;
+    }
+    console.log(this.modelo);
+    console.log(this.busq);
+    console.log(ruta);
+    this.servicio.getData(this.modelo + this.busq , ruta).subscribe(
       data => {
         this.lista = data.results;
         this.datos = data.count;
+        this.pagination();
         this.paginationEvent.emit(this.lista);
       },
       error => {

@@ -13,6 +13,10 @@ import { PreciosComponent } from './components/mercaderia/precios/precios.compon
 import { PreciosRutas } from './components/mercaderia/precios/precios.routes';
 import { ProductosRutas } from './components/mercaderia/productos/productos.routes';
 import { ProductosComponent } from './components/mercaderia/productos/productos.component';
+import { ConsignacionesComponent } from './components/consignaciones/consignaciones.component';
+import { ConsignacionesRutas } from './components/consignaciones/consignaciones.routes';
+import { ComprasComponent } from './components/compras/compras.component';
+import { ComprasRutas } from './components/compras/compras.routes';
 
 const appRoutes: Routes = [
     {path: 'clientes', component: ClientesComponent, children: ClientesRutas},
@@ -22,6 +26,8 @@ const appRoutes: Routes = [
     {path: 'modelos', component: ModelosComponent, children: ModelosRutas},
     {path: 'precios', component: PreciosComponent, children: PreciosRutas},
     {path: 'productos', component: ProductosComponent, children: ProductosRutas},
+    {path: 'consignaciones', component: ConsignacionesComponent, children: ConsignacionesRutas},
+    {path: 'compras', component: ComprasComponent, children: ComprasRutas},
     {path: '', redirectTo: '/clientes/agregar', pathMatch: 'full'},
     {path: '**', redirectTo: '/clientes/agregar', pathMatch: 'full'},
 ];

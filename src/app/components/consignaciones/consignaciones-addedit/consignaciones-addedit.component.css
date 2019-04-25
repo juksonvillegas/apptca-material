@@ -12,3 +12,10 @@
         text-align: left;    
     }
 }
+.input-full-width{
+    padding-top: 15px;
+    width: 100%;
+}
+.mat-card-actions{
+    text-align: right;
+}

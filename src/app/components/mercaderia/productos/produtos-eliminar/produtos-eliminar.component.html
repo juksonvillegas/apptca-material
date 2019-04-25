@@ -1,3 +1,30 @@
-<p>
-  produtos-eliminar works!
-</p>
+<mat-card>
+  <mat-card-title>
+    ID: {{dato.id}}
+  </mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        CATEGORIA: {{dato.categoria_nombre|titlecase}}
+      </mat-list-item>
+      <mat-list-item>
+        MARCA: {{dato.marca_nombre|titlecase}}
+      </mat-list-item>
+      <mat-list-item>
+        MODELO: {{dato.modelo_nombre|titlecase}}
+      </mat-list-item>
+      <mat-list-item>
+        P. UNITARIO: {{dato.precio_unitario}}
+      </mat-list-item>
+      <mat-list-item>
+        P. PUNTO: {{dato.precio_punto}}
+      </mat-list-item>
+      <mat-list-item>
+        P. DOCENA: {{dato.precio_docena}}
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-actions style="text-align: right;">
+    <button (click)="eliminar()" mat-raised-button color="warn" >Eliminar</button>
+  </mat-card-actions>
+</mat-card>

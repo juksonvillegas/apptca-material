@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar style="background: #f4ed6d;" *ngIf="this.id">
+      <span>Editando...</span>
+    </mat-toolbar>
+    <form action="" [formGroup]="formGroup">
+      <table class="input-full-width">
+          <tr>
+              <td>
+                <mat-form-field class="input-full-width">
+                  <input #inputProveedor formControlName="proveedor" (keyup)="buscarProveedor(inputProveedor.value)" required [matAutocomplete]="proveedorautocomplete" matInput placeholder="Proveedor">
+                </mat-form-field>
+                <mat-autocomplete autoActiveFirstOption #proveedorautocomplete="matAutocomplete" [displayWith]="displayFn">
+                  <mat-option *ngFor="let proveedor of proveedores" [value]="proveedor">
+                    <span>{{ proveedor.nombre }}</span>
+                    <small> | ID: {{proveedor.id}}</small>
+                  </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="getError('proveedor')">
+                  Debe seleccionar Proveedor
+                </mat-error>
+              </td>
+            </tr>
+        <tr>
+          <td>
+              <mat-form-field class="input-middle-width">
+                <input matInput formControlName="fecha" [matDatepicker]="picker" autocomplete="off" placeholder="Fecha">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <mat-form-field class="input-middle-width">
+                  <input type="number" formControlName="flete" required matInput placeholder="Flete" autocomplete="off">
+                </mat-form-field>
+                <mat-error *ngIf="getError('flete')">
+                  Error en flete
+                </mat-error>
+          </td>
+          </tr>
+      </table>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="retornar();" mat-raised-button *ngIf="!dato.estado" color="primary">Retornar</button>
+    <button *ngIf="dato.estado" (click)="guardar();" mat-raised-button [disabled]="formGroup.invalid" color="primary">Guardar</button>
+  </mat-card-actions>
+</mat-card>

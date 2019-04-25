@@ -4,7 +4,7 @@
     <mat-table [dataSource]="this.lista">
       <ng-container matColumnDef="categoria" >
         <mat-header-cell *matHeaderCellDef> Categoria </mat-header-cell>
-        <mat-cell *matCellDef="let column" data-label="nombre">
+        <mat-cell *matCellDef="let column" data-label="Categoria">
           <span [ngClass]="{'eliminado':!column.estado}">
             {{column.categoria_nombre | uppercase}}
           </span>
@@ -12,7 +12,7 @@
       </ng-container>
       <ng-container matColumnDef="marca" >
         <mat-header-cell *matHeaderCellDef> Marca </mat-header-cell>
-        <mat-cell *matCellDef="let column" data-label="nombre">
+        <mat-cell *matCellDef="let column" data-label="Marca">
           <span [ngClass]="{'eliminado':!column.estado}">
             {{column.marca_nombre | uppercase}}
           </span>
@@ -20,7 +20,7 @@
       </ng-container>
       <ng-container matColumnDef="modelo" >
         <mat-header-cell *matHeaderCellDef> Modelo </mat-header-cell>
-        <mat-cell *matCellDef="let column" data-label="nombre">
+        <mat-cell *matCellDef="let column" data-label="Modelo">
           <span [ngClass]="{'eliminado':!column.estado}">
             {{column.modelo_nombre | uppercase}}
           </span>
@@ -69,7 +69,7 @@
       <ng-container matColumnDef="editar" >
           <mat-header-cell *matHeaderCellDef> </mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <a routerLink="/precios/editar/{{row.id}}">
+            <a routerLink="/productos/editar/{{row.id}}">
               <mat-icon>edit</mat-icon>
             </a>
           </mat-cell>
@@ -77,7 +77,7 @@
       <ng-container matColumnDef="eliminar" >
           <mat-header-cell *matHeaderCellDef> </mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <a routerLink="/precios/eliminar/{{row.id}}">
+            <a routerLink="/productos/eliminar/{{row.id}}">
               <mat-icon>delete</mat-icon>
             </a>
           </mat-cell>

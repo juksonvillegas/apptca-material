@@ -14,7 +14,9 @@ export class ProductosListaComponent implements OnInit {
   @Input() data: any = [];
   term = '';
   params = [
-    {text: 'Nombre', value: '?nombre__icontains='}
+    {text: 'Categoria', value: '?categoria__nombre__icontains='},
+    {text: 'Modelo', value: '?modelo__nombre__icontains='},
+    {text: 'Marca', value: '?modelo__marca__nombre__icontains='}
   ];
   tableColumns:  string[] = ['categoria', 'marca', 'modelo', 'costo', 'stock', 'unitario', 'punto', 'docena', 'editar', 'eliminar'];
   constructor(private servicio: ApiService) { }
@@ -31,7 +33,6 @@ export class ProductosListaComponent implements OnInit {
     this.servicio.getData(this.modelo, ruta).subscribe(
       data => {
         this.lista = data.results;
-        console.log(this.lista);
         this.datos = data.count;
         this.pagination();
       },

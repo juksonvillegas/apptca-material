@@ -15,8 +15,8 @@ export class ProductosAddeditComponent implements OnInit {
   param = '?nombre__icontains=';
   modelos = [];
   id = '';
-  dato = {id: '', marca: '-1', marca_nombre: '' , categoria: '-1', categoria_nombre: '',
-  precio: '-1', p_unitario: '', p_punto: '', p_docena: '', estado: true };
+  dato = {id: '', marca: '-1', marca_nombre: '', modelo: '-1', modelo_nombre: '' , categoria: '-1', categoria_nombre: '',
+  precio: '-1', precio_nombre: '', p_unitario: '', p_punto: '', p_docena: '', estado: true };
   isLoading = false;
   constructor(
     private formBuilder: FormBuilder,
@@ -34,25 +34,24 @@ export class ProductosAddeditComponent implements OnInit {
       this.servicio.getDataId(this.modelo, this.id).subscribe(
         data => {
           this.dato = data;
-          console.log(this.dato);
           this.buildForm();
         },
         error => {
           if (error.status === 404) {
-            this.router.navigateByUrl('/clientes/lista');
+            this.router.navigateByUrl('/productos/lista');
           } else { console.log(error); }
         }
       );
     }
   }
   buildForm() {
-    const marc = {id: this.dato.marca, nombre: this.dato.marca_nombre};
+    const mode = {id: this.dato.modelo, nombre: this.dato.modelo_nombre};
     const cate = {id: this.dato.categoria, nombre: this.dato.categoria_nombre};
-    const prec = {id: this.dato.precio, p_unitario: this.dato.p_unitario, p_punto: this.dato.p_punto, p_docena: this.dato.p_docena };
+    const prec = {id: this.dato.precio, nombre: this.dato.precio_nombre };
     this.formGroup = this.formBuilder.group({
       id: [this.dato.id],
       categoria: [ cate, Validators.compose([Validators.required, Validators.minLength(2), this.validarSeleccionado() ])],
-      modelo: [ marc, Validators.compose([Validators.required, Validators.minLength(2), this.validarSeleccionado() ])],
+      modelo: [ mode, Validators.compose([Validators.required, Validators.minLength(2), this.validarSeleccionado() ])],
       precio: [ prec, Validators.compose([Validators.required, Validators.minLength(2), this.validarSeleccionado() ])],
     });
     if (!this.dato.estado) {
@@ -93,14 +92,42 @@ export class ProductosAddeditComponent implements OnInit {
     return error;
   }
   guardar() {
-    console.log('guardando');
     this.formGroup.value.categoria = this.formGroup.value.categoria.id;
     this.formGroup.value.modelo = this.formGroup.value.modelo.id;
     this.formGroup.value.precio = this.formGroup.value.precio.id;
-    console.log(this.formGroup.value);
+    if (!this.id) {
+      this.servicio.addData(this.modelo, this.formGroup.value).subscribe(
+        data => {
+          this.router.navigateByUrl('/productos/lista');
+          this.snackBar.open('Registro agregado...', 'x', {duration: 3000});
+        },
+        error => {
+          this.snackBar.open(error.name, 'x', {duration: 3000});
+        }
+      );
+    } else {
+      this.servicio.updateData(this.modelo, this.formGroup.value).subscribe(
+        data => {
+          this.router.navigateByUrl('/productos/lista');
+          this.snackBar.open('Registro actualizado...', 'x', {duration: 3000});
+        },
+        error => {
+          this.snackBar.open(error.name, 'x', {duration: 3000});
+        }
+      );
+    }
   }
   retornar() {
-    console.log('retornando');
+    this.dato.estado = true;
+    this.servicio.deleteData(this.modelo, this.dato).subscribe(
+      data => {
+        this.router.navigateByUrl('/productos/lista');
+        this.snackBar.open('Registro recuperado...', 'x', {duration: 5000});
+      },
+      error => {
+        this.snackBar.open(error.name, 'x', {duration: 3000});
+      }
+    );
   }
   ngOnInit() {
   }

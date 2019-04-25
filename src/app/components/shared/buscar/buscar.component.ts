@@ -19,9 +19,10 @@ export class BuscarComponent implements OnInit {
     if ($event.target.value.length > 1) {
       const split = $event.target.value.split('+');
       if (split.length > 1) {
-        this.term = '';
+        this.term = '?';
         split.forEach((value, index) => {
-          this.term += this.params[index].value + value + '&';
+          const param = this.params[index].value.substring(1);
+          this.term += param + value + '&';
         });
       } else {
         // falta obtener el valor del select
@@ -31,7 +32,7 @@ export class BuscarComponent implements OnInit {
         data => {
           // data results contiene solo el array de datos
           this.datos = data;
-          this.busquedaEvent.emit(this.datos);
+          this.busquedaEvent.emit({datos: this.datos, term: this.term});
         },
         error => {
           console.log(error);
@@ -39,8 +40,17 @@ export class BuscarComponent implements OnInit {
       );
     }
     if ($event.target.value.length === 0 ) {
-      this.datos = [];
-      this.busquedaEvent.emit(this.datos);
+      this.term = '';
+      this.servicio.getData(this.modelo).subscribe(
+        data => {
+          // data results contiene solo el array de datos
+          this.datos = data;
+          this.busquedaEvent.emit({datos: this.datos, term: this.term});
+        },
+        error => {
+          console.log(error);
+        }
+      );
     }
   }
   selected($event) {

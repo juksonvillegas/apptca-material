@@ -12,3 +12,20 @@
         text-align: left;    
     }
 }
+.input-full-width{
+    padding-top: 15px;
+    width: 100%;
+}
+.input-middle-width{
+    width: 50%;
+}
+.mat-radio-level-content{
+    padding-right: 10px;
+}
+.mat-card-actions{
+    text-align: right;
+}
+.mat-button-toggle-checked{
+    background: #4caf50;
+    color: white;
+}

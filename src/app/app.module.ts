@@ -39,6 +39,14 @@ import { ProductosComponent } from './components/mercaderia/productos/productos.
 import { ProductosAddeditComponent } from './components/mercaderia/productos/productos-addedit/productos-addedit.component';
 import { ProductosListaComponent } from './components/mercaderia/productos/productos-lista/productos-lista.component';
 import { ProdutosEliminarComponent } from './components/mercaderia/productos/produtos-eliminar/produtos-eliminar.component';
+import { ConsignacionesComponent } from './components/consignaciones/consignaciones.component';
+import { ConsignacionesAddeditComponent } from './components/consignaciones/consignaciones-addedit/consignaciones-addedit.component';
+import { ConsignacionesListaComponent } from './components/consignaciones/consignaciones-lista/consignaciones-lista.component';
+import { ConsignacionesEliminarComponent } from './components/consignaciones/consignaciones-eliminar/consignaciones-eliminar.component';
+import { ComprasComponent } from './components/compras/compras.component';
+import { ComprasAddeditComponent } from './components/compras/compras-addedit/compras-addedit.component';
+import { ComprasListaComponent } from './components/compras/compras-lista/compras-lista.component';
+import { ComprasEliminarComponent } from './components/compras/compras-eliminar/compras-eliminar.component';
 
 
 @NgModule({
@@ -74,7 +82,15 @@ import { ProdutosEliminarComponent } from './components/mercaderia/productos/pro
     ProductosComponent,
     ProductosAddeditComponent,
     ProductosListaComponent,
-    ProdutosEliminarComponent
+    ProdutosEliminarComponent,
+    ConsignacionesComponent,
+    ConsignacionesAddeditComponent,
+    ConsignacionesListaComponent,
+    ConsignacionesEliminarComponent,
+    ComprasComponent,
+    ComprasAddeditComponent,
+    ComprasListaComponent,
+    ComprasEliminarComponent
   ],
   imports: [
     BrowserModule,
