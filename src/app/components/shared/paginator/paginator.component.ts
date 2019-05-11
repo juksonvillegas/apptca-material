@@ -40,9 +40,6 @@ export class PaginatorComponent implements OnInit, OnChanges {
     } else {
       ruta = '?page=' + page;
     }
-    console.log(this.modelo);
-    console.log(this.busq);
-    console.log(ruta);
     this.servicio.getData(this.modelo + this.busq , ruta).subscribe(
       data => {
         this.lista = data.results;

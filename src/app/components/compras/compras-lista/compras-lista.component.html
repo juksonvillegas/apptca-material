@@ -1,3 +1,45 @@
-<p>
-  compras-lista works!
-</p>
+<app-buscar (busquedaEvent)="busqueda($event)" [modelo]="modelo" [params]="params" ></app-buscar>
+<mat-card>
+  <mat-card-content>
+    <mat-table [dataSource]="this.lista">
+      <ng-container matColumnDef="fecha" >
+        <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="Fecha">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            {{ column.fecha | date: 'dd/MM/yyyy' }}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="proveedor" >
+        <mat-header-cell *matHeaderCellDef> Proveedor </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="Proveedor">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            {{column.proveedor_nombre | uppercase}}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="flete" >
+        <mat-header-cell *matHeaderCellDef> Flete </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="Flete">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            {{column.flete}}
+          </span>
+        </mat-cell>
+      </ng-container> 
+
+      <ng-container matColumnDef="ver" >
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <a routerLink="/compras/ver/{{row.id}}">
+              <mat-icon>format_list_numbered</mat-icon>
+            </a>
+          </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-paginator (paginationEvent)="paginarModelo($event)" [busq]="busq" [modelo]="modelo" [pages]="pages" [datos]="datos" ></app-paginator>
+  </mat-card-actions> 
+</mat-card> 

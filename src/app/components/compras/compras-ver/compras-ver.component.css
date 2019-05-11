@@ -13,23 +13,18 @@
     }
 }
 .mat-card-actions{
-    text-align: center;
+  padding: 1em;
+  text-align: right;
 }
 
   .mat-header-cell:first-child,.mat-cell:first-child{
-    flex:20%;
+    flex:80%;
   }
   .mat-header-cell:nth-child(2),.mat-cell:nth-child(2){
-    flex:50%;
+    flex:10%;
   }
   .mat-header-cell:nth-child(3),.mat-cell:nth-child(3){
-    flex:20%;
-  }
-  .mat-header-cell:nth-child(4),.mat-cell:nth-child(4){
-    flex:5%;
-  }
-  .mat-header-cell:nth-child(5),.mat-cell:nth-child(5){
-    flex:5%;
+    flex:10%;
   }
 
   .eliminado{

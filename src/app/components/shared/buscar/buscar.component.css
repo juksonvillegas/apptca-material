@@ -6,7 +6,7 @@
 }
 @media only screen and (min-width: 600px) {
     .mat-expansion-panel{
-        max-width: 80%;
+        max-width: 60%;
         padding-left: 16px;
         padding-right: 16px;
         margin: 1em auto;    

@@ -29,6 +29,10 @@ export class ApiService {
       return this.http.put(this.baserl + modelo + data.id + '/', data,
       {headers: this.httpHeaders});
     }
+    realDeleteData(modelo: string, id: any): Observable<any> {
+      return this.http.delete(this.baserl + modelo + id + '/',
+      {headers: this.httpHeaders});
+    }
     addData(modelo: string, data: any): Observable<any> {
       return this.http.post(this.baserl + modelo , data,
       {headers: this.httpHeaders});

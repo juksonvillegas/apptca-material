@@ -46,8 +46,12 @@ import { ConsignacionesEliminarComponent } from './components/consignaciones/con
 import { ComprasComponent } from './components/compras/compras.component';
 import { ComprasAddeditComponent } from './components/compras/compras-addedit/compras-addedit.component';
 import { ComprasListaComponent } from './components/compras/compras-lista/compras-lista.component';
-import { ComprasEliminarComponent } from './components/compras/compras-eliminar/compras-eliminar.component';
-
+import { ComprasVerComponent } from './components/compras/compras-ver/compras-ver.component';
+import 'hammerjs';
+import { VentasComponent } from './components/ventas/ventas.component';
+import { VentasAddeditComponent } from './components/ventas/ventas-addedit/ventas-addedit.component';
+import { VentasListaComponent } from './components/ventas/ventas-lista/ventas-lista.component';
+import { VentasVerComponent } from './components/ventas/ventas-ver/ventas-ver.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +94,11 @@ import { ComprasEliminarComponent } from './components/compras/compras-eliminar/
     ComprasComponent,
     ComprasAddeditComponent,
     ComprasListaComponent,
-    ComprasEliminarComponent
+    ComprasVerComponent,
+    VentasComponent,
+    VentasAddeditComponent,
+    VentasListaComponent,
+    VentasVerComponent
   ],
   imports: [
     BrowserModule,

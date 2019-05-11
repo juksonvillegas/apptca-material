@@ -17,6 +17,8 @@ import { ConsignacionesComponent } from './components/consignaciones/consignacio
 import { ConsignacionesRutas } from './components/consignaciones/consignaciones.routes';
 import { ComprasComponent } from './components/compras/compras.component';
 import { ComprasRutas } from './components/compras/compras.routes';
+import { VentasComponent } from './components/ventas/ventas.component';
+import { VentasRutas } from './components/ventas/ventas.routes';
 
 const appRoutes: Routes = [
     {path: 'clientes', component: ClientesComponent, children: ClientesRutas},
@@ -28,6 +30,7 @@ const appRoutes: Routes = [
     {path: 'productos', component: ProductosComponent, children: ProductosRutas},
     {path: 'consignaciones', component: ConsignacionesComponent, children: ConsignacionesRutas},
     {path: 'compras', component: ComprasComponent, children: ComprasRutas},
+    {path: 'ventas', component: VentasComponent, children: VentasRutas},
     {path: '', redirectTo: '/clientes/agregar', pathMatch: 'full'},
     {path: '**', redirectTo: '/clientes/agregar', pathMatch: 'full'},
 ];

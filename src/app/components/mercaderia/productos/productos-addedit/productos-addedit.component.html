@@ -56,6 +56,20 @@
             </mat-error>
           </td>
         </tr>
+        <tr>
+          <td *ngIf="this.id">
+            <mat-form-field class="input-middle-width">
+              <input type="number" formControlName="costo" value=0 matInput placeholder="Costo" autocomplete="off">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr *ngIf="this.id">
+          <td>
+            <mat-form-field class="input-middle-width">
+              <input type="number" formControlName="stock" value=0 matInput placeholder="Stock" autocomplete="off">
+            </mat-form-field>
+          </td>
+        </tr>
       </table>
     </form>
   </mat-card-content>

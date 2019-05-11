@@ -16,7 +16,7 @@ export class ProductosAddeditComponent implements OnInit {
   modelos = [];
   id = '';
   dato = {id: '', marca: '-1', marca_nombre: '', modelo: '-1', modelo_nombre: '' , categoria: '-1', categoria_nombre: '',
-  precio: '-1', precio_nombre: '', p_unitario: '', p_punto: '', p_docena: '', estado: true };
+  precio: '-1', precio_nombre: '', p_unitario: '', p_punto: '', p_docena: '', stock: '', costo: '', estado: true };
   isLoading = false;
   constructor(
     private formBuilder: FormBuilder,
@@ -53,6 +53,8 @@ export class ProductosAddeditComponent implements OnInit {
       categoria: [ cate, Validators.compose([Validators.required, Validators.minLength(2), this.validarSeleccionado() ])],
       modelo: [ mode, Validators.compose([Validators.required, Validators.minLength(2), this.validarSeleccionado() ])],
       precio: [ prec, Validators.compose([Validators.required, Validators.minLength(2), this.validarSeleccionado() ])],
+      stock: [this.dato.stock],
+      costo: [this.dato.costo]
     });
     if (!this.dato.estado) {
       this.formGroup.disable();
@@ -74,7 +76,7 @@ export class ProductosAddeditComponent implements OnInit {
   validarSeleccionado(): ValidatorFn {
     return (control: AbstractControl) => {
       let error = null;
-      if (!control.value.id) {
+      if (!control.value.id || control.value.id === '-1') {
         error = { number: 'incorrectos digitos' };
       }
       return error;
@@ -96,6 +98,8 @@ export class ProductosAddeditComponent implements OnInit {
     this.formGroup.value.modelo = this.formGroup.value.modelo.id;
     this.formGroup.value.precio = this.formGroup.value.precio.id;
     if (!this.id) {
+      this.formGroup.value.stock = 0;
+      this.formGroup.value.costo = 0.00;
       this.servicio.addData(this.modelo, this.formGroup.value).subscribe(
         data => {
           this.router.navigateByUrl('/productos/lista');

@@ -38,7 +38,7 @@
         <mat-header-cell *matHeaderCellDef> Stock </mat-header-cell>
         <mat-cell *matCellDef="let column" data-label="Stock">
           <span [ngClass]="{'eliminado':!column.estado}">
-            {{column.stock | uppercase}}
+            {{column.stock}}
           </span>
         </mat-cell>
       </ng-container> 
@@ -87,7 +87,7 @@
     </mat-table>
   </mat-card-content>
   <mat-card-actions>
-    <app-paginator (paginationEvent)="paginarModelo($event)" [modelo]="modelo" [pages]="pages" [datos]="datos" ></app-paginator>
+    <app-paginator (paginationEvent)="paginarModelo($event)" [busq]="busq" [modelo]="modelo" [pages]="pages" [datos]="datos" ></app-paginator>
   </mat-card-actions> 
 </mat-card> 
 
