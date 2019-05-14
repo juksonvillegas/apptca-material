@@ -8,16 +8,16 @@
           <tr>
               <td>
                 <mat-form-field class="input-full-width">
-                  <input #inputProveedor formControlName="proveedor" (keyup)="buscarProveedor(inputProveedor.value)" required [matAutocomplete]="proveedorautocomplete" matInput placeholder="Proveedor">
+                  <input #inputCliente formControlName="cliente" (keyup)="buscarCliente(inputCliente.value)" required [matAutocomplete]="clienteautocomplete" matInput placeholder="Cliente">
                 </mat-form-field>
-                <mat-autocomplete autoActiveFirstOption #proveedorautocomplete="matAutocomplete" [displayWith]="displayFn">
-                  <mat-option *ngFor="let proveedor of proveedores" [value]="proveedor">
-                    <span>{{ proveedor.nombre }}</span>
-                    <small> | ID: {{proveedor.id}}</small>
+                <mat-autocomplete autoActiveFirstOption #clienteautocomplete="matAutocomplete" [displayWith]="displayFn">
+                  <mat-option *ngFor="let cliente of clientes" [value]="cliente">
+                    <span>{{ cliente.nombre }}</span>
+                    <small> | ID: {{cliente.id}}</small>
                   </mat-option>
                 </mat-autocomplete>
-                <mat-error *ngIf="getError('proveedor')">
-                  Debe seleccionar Proveedor
+                <mat-error *ngIf="getError('cliente')">
+                  Debe seleccionar cliente
                 </mat-error>
               </td>
             </tr>
@@ -28,16 +28,6 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-              <mat-form-field class="input-middle-width">
-                  <input type="number" formControlName="flete" required matInput placeholder="Flete" autocomplete="off">
-              </mat-form-field>
-              <mat-error *ngIf="getError('flete')">
-                Error en flete
-              </mat-error> 
           </td>
         </tr>
         <button mat-flat-button color="accent"  (click)="addProduct()" >Agregar Productos</button>
@@ -53,7 +43,7 @@
                 </mat-form-field>
                 <mat-autocomplete autoActiveFirstOption #productoautocomplete="matAutocomplete" [displayWith]="displayFnPro.bind(this)">
                     <mat-option *ngFor="let producto of productos" [value]="producto.id">
-                      <span> <small> {{ producto.categoria_nombre | titlecase }} </small> - {{ producto.marca_nombre | titlecase }} - {{ producto.modelo_nombre | titlecase }} </span>
+                      <span> <small> {{ producto.categoria_nombre | titlecase }} </small> - {{ producto.marca_nombre | titlecase }} - {{ producto.modelo_nombre | titlecase }} ({{producto.stock}}) </span>
                     </mat-option>
                 </mat-autocomplete>
                 <!-- %%%%%%%%%%%%%% -->
@@ -61,23 +51,22 @@
                 <mat-form-field class="input-little-width">
                     <input type="number" formControlName="cantidad" required matInput placeholder="Cantidad" autocomplete="off">
                 </mat-form-field>
-                <mat-error *ngIf="getError('flete')">
+                <!-- <mat-error *ngIf="getError('cantidad')"> 
                   Error en cantidad
-                </mat-error>
+                </mat-error> -->
                 <!-- %%%%%%%%%%%%%% -->
                 <!-- Input Costo -->
                 <mat-form-field class="input-little-width">
-                    <input type="number" formControlName="costo" required matInput placeholder="Costo" autocomplete="off">
+                    <input type="number" formControlName="precio" required matInput placeholder="Precio" autocomplete="off">
                 </mat-form-field>
-                <mat-error *ngIf="getError('flete')">
+                 <!-- <mat-error *ngIf="getError('precio')">
                   Error en costo
-                </mat-error>
+                </mat-error> -->
                 <!-- %%%%%%%%%%%% -->
                 <button (click)="delProduct(i)" mat-flat-button color="warn" >
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>
-            <!-- Chosen name: {{ formGroup.controls.productos.controls[i].controls.name.value }} -->
           </div>
           </td>
         </tr>

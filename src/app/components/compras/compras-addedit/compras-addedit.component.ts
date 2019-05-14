@@ -151,7 +151,6 @@ export class ComprasAddeditComponent implements OnInit {
     } else {
       date = this.formGroup.value.fecha.toJSON().split('T');
     }
-    console.log(this.formGroup.value);
     if (this.formGroup.valid) {
       this.formGroup.value.proveedor = this.formGroup.value.proveedor.id;
       if (!this.id) {
