@@ -18,11 +18,11 @@ export class PaginatorComponent implements OnInit, OnChanges {
   constructor(private servicio: ApiService) {
   }
   ngOnInit() {
-    this.paginar(1);
+    // this.paginar(1);
   }
 
   ngOnChanges() {
-    this.ngOnInit();
+    this.paginar(1);
   }
 
   pagination() {

@@ -1,3 +1,48 @@
-<p>
-  ventas-lista works!
-</p>
+<!-- <app-buscar (busquedaEvent)="busqueda($event)" [modelo]="modelo" [params]="params" ></app-buscar> -->
+<mat-card>
+  <mat-card-title>
+    Total de las ventas: S/. {{this.total}}
+  </mat-card-title>
+  <mat-card-content>
+    <mat-table [dataSource]="this.lista">
+      <ng-container matColumnDef="fecha" >
+        <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="Fecha">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            {{ column.fecha | date: 'dd/MM/yyyy, h:mm a' }}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="cliente" >
+        <mat-header-cell *matHeaderCellDef> Cliente </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="Cliente">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            {{column.cliente_nombre | uppercase}}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="total" >
+        <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="Total">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            S/. {{column.total}}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="ver" >
+          <mat-header-cell *matHeaderCellDef>Detalles</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <a routerLink="/ventas/ver/{{row.id}}">
+              <mat-icon>format_list_numbered</mat-icon>
+            </a>
+          </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-paginator (paginationEvent)="paginarModelo($event)" [busq]="busq" [modelo]="modelo" [pages]="pages" [datos]="datos" ></app-paginator>
+  </mat-card-actions> 
+</mat-card> 
+

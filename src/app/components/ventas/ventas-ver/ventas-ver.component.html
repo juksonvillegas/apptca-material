@@ -1,3 +1,51 @@
-<p>
-  ventas-ver works!
-</p>
+<mat-card>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        Cliente: {{ dato.cliente_nombre|uppercase }}
+      </mat-list-item>
+      <mat-list-item>
+        Fecha: {{ dato.fecha| date: 'dd/MM/yyyy' }} 
+      </mat-list-item>
+      <mat-list-item>
+        Total: S/. {{total}}
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-table [dataSource]="this.lista">
+      <ng-container matColumnDef="producto" >
+        <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="Producto">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            {{ column.categoria + ' - ' + column.marca + ' - ' + column.modelo | uppercase}}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="cantidad" >
+        <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="Cantidad">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            {{column.cantidad}}
+          </span>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="precio" >
+        <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+        <mat-cell *matCellDef="let column" data-label="Precio">
+          <span [ngClass]="{'eliminado':!column.estado}">
+            {{column.precio}}
+          </span>
+        </mat-cell>
+      </ng-container> 
+      <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
+    </mat-table>
+    <mat-card-actions>
+      <button mat-raised-button color="warn" *ngIf="!eliminando" (click)="eliminar()" >Eliminar</button>
+      <div *ngIf="eliminando">
+        <span>¿Realmente desea eliminar?</span>
+        <button mat-raised-button color="warn" (click)="siEliminar()">Si</button>
+        <button mat-raised-button color="secondary" (click)="noEliminar()" >No</button>
+      </div>
+    </mat-card-actions>
+</mat-card>

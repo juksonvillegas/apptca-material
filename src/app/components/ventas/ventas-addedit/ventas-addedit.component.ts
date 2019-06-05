@@ -54,11 +54,12 @@ export class VentasAddeditComponent implements OnInit {
   ngOnInit() {
   }
   buildForm() {
+    const DATE = new FormControl(new Date());
     const clie = {id: this.dato.cliente, nombre: this.dato.cliente_nombre};
     this.formGroup = this.formBuilder.group({
       id: [this.dato.id],
       cliente: [ clie, Validators.compose([Validators.required, Validators.minLength(2), this.validarCliente() ])],
-      fecha: [this.dato.fecha, Validators.required],
+      fecha: [DATE.value , Validators.required],
       detalles: this.formBuilder.array([
         this.buildFormProd()
       ])
@@ -139,11 +140,17 @@ export class VentasAddeditComponent implements OnInit {
     console.log(this.formGroup);
     let idcompra: number;
     let date: string[];
-    if (typeof this.formGroup.value.fecha === 'string') {
-      date = this.formGroup.value.fecha.split('T');
-    } else {
-      date = this.formGroup.value.fecha.toJSON().split('T');
+    const DATE = new FormControl(new Date());
+    console.log(DATE.value);
+    console.log(this.formGroup.value.fecha);
+    if (this.formGroup.value.fecha === DATE) {
+      console.log('no cambio la fecha');
     }
+    // if (typeof this.formGroup.value.fecha === 'string') {
+    //   date = this.formGroup.value.fecha.split('T');
+    // } else {
+    //   date = this.formGroup.value.fecha.toJSON().split('T');
+    // }
     if (this.formGroup.valid) {
       this.formGroup.value.cliente = this.formGroup.value.cliente.id;
       if (!this.id) {
